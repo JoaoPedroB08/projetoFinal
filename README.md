@@ -1,6 +1,6 @@
 # projetodb
 
-> "PORT = '3001'
+"PORT = '3001'
 USER_NAME = 'postgres'
 HOST_NAME = 'localhost'
 DB_NAME = 'jaoDB'
