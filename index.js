@@ -10,6 +10,16 @@ const app = express();
 
 app.use(express.json());
 
+
+// Rota para listar todos os clientes
+app.get('/client', async (req, res) => {
+    // Chama a função que seleciona os clientes no banco de dados
+    const clientes = await db.selectCustomers();
+    // Envia a resposta em formato JSON contendo os clientes
+    res.json(clientes);
+    });
+
+    
 // Rota para inserir clientes
 app.post("/client", async (req, res) => {
     await db.insertCustomers(req.body);

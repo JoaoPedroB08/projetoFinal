@@ -25,6 +25,18 @@ async function connect() {
   connect();
 
 
+// Função para listar clientes
+async function selectCustomers() {
+  // Estabelecer conexão com o banco de dados
+  const client = await connect();
+  // Enviar comando SQL para o banco de dados
+  const res = await client.query("SELECT * FROM client");
+  // Retorna as linhas (registros) da tabela
+  return res.rows;
+  }
+  // Exportando as funções para uso no backend
+
+
   // Função para inserir clientes
 async function insertCustomers(customers) {
 
@@ -42,5 +54,7 @@ async function insertCustomers(customers) {
 }
 
   module.exports = {
-    insertCustomers
+    insertCustomers,
+    selectCustomers
   }
+
