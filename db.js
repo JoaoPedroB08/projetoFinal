@@ -34,8 +34,16 @@ async function selectCustomers() {
   // Retorna as linhas (registros) da tabela
   return res.rows;
   }
-  // Exportando as funções para uso no backend
 
+  // Função para listar um cliente
+async function selectCustomer(id) {
+  // Estabelece a conexão com o banco de dados
+  const client = await connect();
+  // Executa a query SQL usando declaração preparada para evitar SQL Injection
+  const res = await client.query("SELECT * FROM client WHERE cpf=$1", [id]);
+  // Retorna as linhas (dados do cliente)
+  return res.rows;
+  }
 
   // Função para inserir clientes
 async function insertCustomers(customers) {
@@ -55,6 +63,6 @@ async function insertCustomers(customers) {
 
   module.exports = {
     insertCustomers,
-    selectCustomers
+    selectCustomers,
+    selectCustomer
   }
-
